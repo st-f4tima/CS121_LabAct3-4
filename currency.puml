@@ -1,0 +1,45 @@
+@startuml currency_uml
+abstract class Currency {
+    - amount: float
+    - currency_name: str
+    ---
+    + __init__(amount: float, currency_name: str, exhange_rate: float)
+    + get_amount(): float
+    + get_currency(): str
+    # convert_to(other_currency: str, amount: float)
+    + compare_with(other_currency: str, basis_currency: str)
+    + __str__
+}
+
+class PhilippinePeso {
+    - sub_unit: str
+    ---
+    + convert_to(other_currency: str, amount: float)
+}
+
+class JapaneseYen {
+    ---
+    + convert_to(other_currency: str, amount: float)
+}
+
+class USDollar {
+    - sub_unit: str
+    ---
+    + convert_to(other_currency: str, amount: float)
+}
+
+class IndianRupee {
+    - sub_unit: str
+    ---
+    + convert_to(other_currency: str, amount: float)
+}
+
+Currency <-down- PhilippinePeso 
+Currency <-up- JapaneseYen
+Currency <-left- USDollar
+Currency <-right- IndianRupee
+
+' PhilippinePeso -down-> Currency
+' JapaneseYen -up-> Currency
+
+@enduml
