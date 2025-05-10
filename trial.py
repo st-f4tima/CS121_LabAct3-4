@@ -1,8 +1,11 @@
 # Baka may pwede kayong idagdag na specialized properties per subclass. 
 # Then baka gusto nyo rin gawing responsive, dagdagan or ayusin nyo nalang...
 
-
 from abc import ABC, abstractmethod
+import os
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 exchange_rates = {
     'PHP': 0.018,
@@ -33,7 +36,7 @@ class Currency(ABC):
 
     def __str__(self):
         return (
-            f'\n---💵 Currency Information 💵---\n'
+            f'\n────💵 Currency Information 💵────\n\n'
             f"Currency: {self.currency_code} ({self.symbol})\n"
             f"Subunit: {self.sub_unit}\n"
             f"Exchange Rate to USD: {self._rate_to_usd}"
@@ -81,47 +84,66 @@ def get_currency_instance(currency_code):
     elif currency_code == "INR":
         return IndianRupee()
     else:
-        raise ValueError("Unsupported currency.")
+        raise ValueError(f"Unsupported currency.")
 
 def main():
-    print("\n─────────────🌐 Currency Converter 🌐─────────────\n")
-    print("Choose an option:")
-    print("1. Convert to one currency")
-    print("2. Convert to many currencies")
-    print("3. See which currency is stronger")
-    print("4. View exchange rates")
-    print("5. Quit")
-    choice = input('Enter your choice: ').strip()
+    while True:
+        print("\n─────────────🌐 Currency Converter 🌐─────────────\n")
+        print("Choose an option:")
+        print("1. Convert to one currency")
+        print("2. Convert to many currencies")
+        print("3. See which currency is stronger")
+        print("4. View exchange rates")
+        print("5. Quit")
+        try:
+            choice = input('Enter your choice (1-5): ').strip()
 
-    try:
-        amount = float(input('\nEnter amount: '))
-        base_currency_code = input('Enter base currency code (PHP, JPY, USD, INR): ').strip().upper()
-        currency = get_currency_instance(base_currency_code)
+            if choice == "1":
+                amount = float(input('\nEnter amount: '))
+                base_currency_code = input('Enter base currency code (PHP, JPY, USD, INR): ').strip().upper()
+                currency = get_currency_instance(base_currency_code)
+                target_currency_code = input('Enter target currency code (PHP, JPY, USD, INR): ').strip().upper()
+                if target_currency_code not in exchange_rates:
+                    raise ValueError(f"Unsupported currency.")
+                result = currency.convert_to(amount, target_currency_code)
 
-        if choice == "1":
-            target_currency_code = input('Enter target currency code (PHP, JPY, USD, INR): ').strip().upper()
-            result = currency.convert_to(amount, target_currency_code)
-            print(currency)
-            print(f"{amount:,.2f} {base_currency_code} = {result:,.2f} {target_currency_code}\n")
-        
-        elif choice == "2":
-            print(f"\n---💵 Currency Information 💵---")
-            for code in exchange_rates:
-                if code != base_currency_code:
-                    result = currency.convert_to(amount, code)
-                    print(f"{amount:,.2f} {base_currency_code} = {result:,.2f} {code}")
-            print()
+                clear_screen()
+                print(currency)
+                print("\n💱 Conversion Results:")
+                print(f"{amount:,.2f} {base_currency_code} = {result:,.2f} {target_currency_code}\n")
+            
+            elif choice == "2":
+                amount = float(input('\nEnter amount: '))
+                base_currency_code = input('Enter base currency code (PHP, JPY, USD, INR): ').strip().upper()
+                currency = get_currency_instance(base_currency_code)
+                clear_screen()
+                print(currency)
+                print(f"\n📊 Converting to all other currencies:")
+                for code in exchange_rates:
+                    if code != base_currency_code:
+                        result = currency.convert_to(amount, code)
+                        print(f"{amount:,.2f} {base_currency_code} = {result:,.2f} {code}")
+                print()
 
-        # choice 3
-        # choice 4
-        # choice 5
+            #choice 3
+            #choice 4
+            #choice 5
+            
+            else:
+                raise ValueError('Invalid option. Please choose a number between 1 and 5.')
 
-        else:
-            raise ValueError('Invalid option.')
-
-    except ValueError as e:
-        print(f'\nError: {e}')
-
+            print('───────────────────────────────────')
+            response = input('Do you want to ask again (n/y)? ').strip().lower()
+            if response != 'y':
+                print('\nThank you!')
+                break
+            else:
+                clear_screen()
+            
+        except ValueError as e:
+            print(f'\nError: {e}')
+            input('Please press enter to continue...')
+            clear_screen()
 
 if __name__ == "__main__":
     main()
