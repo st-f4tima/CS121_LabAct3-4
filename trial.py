@@ -1,3 +1,7 @@
+# Baka may pwede kayong idagdag na specialized properties per subclass. 
+# Then baka gusto nyo rin gawing responsive, dagdagan or ayusin nyo nalang...
+
+
 from abc import ABC, abstractmethod
 
 exchange_rates = {
