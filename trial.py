@@ -45,34 +45,54 @@ class Currency(ABC):
 class PhilippinePeso(Currency):
     def __init__(self):
         super().__init__("PHP", "₱", "Centavos", exchange_rates['PHP'])
+        self.central_bank = "Bangko Sentral ng Pilipinas"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
+
+    def __str__(self):
+        base_info = super().__str__()
+        return f"{base_info}\nCentral Bank: {self.central_bank}"
 
 class JapaneseYen(Currency):
     def __init__(self):
         super().__init__("JPY", "¥", "Sen", exchange_rates['JPY'])
+        self.central_bank = "Bank of Japan"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
+
+    def __str__(self):
+        base_info = super().__str__()
+        return f"{base_info}\nCentral Bank: {self.central_bank}"
 
 class USDollar(Currency):
     def __init__(self):
         super().__init__("USD", "$", "Cent", exchange_rates['USD'])
+        self.central_bank = "Federal Reserve"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
+
+    def __str__(self):
+        base_info = super().__str__()
+        return f"{base_info}\nCentral Bank: {self.central_bank}"
 
 class IndianRupee(Currency):
     def __init__(self):
         super().__init__("INR", "₹", "Paise", exchange_rates['INR'])
+        self.central_bank = "Bank of India"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
+
+    def __str__(self):
+        base_info = super().__str__()
+        return f"{base_info}\nCentral Bank: {self.central_bank}"
 
 def get_currency_instance(currency_code):
     if currency_code == "PHP":
