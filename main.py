@@ -28,6 +28,17 @@ class Currency(ABC):
     def convert_to(self, amount, target_currency_code):
         pass
 
+    def compare_with(self, amount, other_currency):
+        self_usd = self.convert_to(amount, "USD")
+        other_usd = other_currency.conver_to(amount, "USD")
+
+        if self_usd > other_usd:
+            reutrn 1
+        elif self_usd < other_usd:
+            return -1
+        else:
+            return 0
+            
     def __str__(self):
         return (
             f'\n─────────────💵 Currency Information 💵─────────────\n\n'
@@ -183,19 +194,18 @@ def main():
                     currency1_obj = get_currency_instance(currency1)
                     currency2_obj = get_currency_instance(currency2)
 
-                    usd_value1 = currency1_obj.convert_to(amount, "USD")
-                    usd_value2 = currency2_obj.convert_to(amount, "USD")
+                    result = currency1.compare_with(amount, currency2)
 
                     clear_screen()
-                    print(f"\n─────────────💵 Currency Comparison 💵─────────────")
-                    print(f"\nComparing {currency1} and {currency2} (converted to USD):")
-                    print(f"{amount:,.2f} {currency1} = {usd_value1:,.2f} USD")
-                    print(f"{amount:,.2f} {currency2} = {usd_value2:,.2f} USD")
+                    print("\n─────────────💵 Currency Comparison 💵─────────────")
+                    print(f"\nComparing {currency1_code} and {currency2_code} (converted to USD):")
+                    print(f"{amount:,.2f} {currency1_code} = {currency1.convert_to(amount, 'USD'):,.2f} USD")
+                    print(f"{amount:,.2f} {currency2_code} = {currency2.convert_to(amount, 'USD'):,.2f} USD")
 
-                    if usd_value1 > usd_value2:
-                        print(f"\n{currency1} is stronger than {currency2}.")
-                    elif usd_value1 < usd_value2:
-                        print(f"\n{currency2} is stronger than {currency1}.")
+                    if result == 1:
+                        print(f"\n{currency1_code} is stronger than {currency2_code}.")
+                    elif result == -1:
+                        print(f"\n{currency2_code} is stronger than {currency1_code}.")
                     else:
                         print("\nBoth currencies have equal strength.")
                 
