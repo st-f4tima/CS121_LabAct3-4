@@ -178,7 +178,8 @@ def main():
 
             elif choice == "4":
                 print("─────────────🌐 Exchange Rate 🌐─────────────")
-                print(exchange_rates) 
+                for rate in exchange_rates:
+                    print(f"{rate}: {exchange_rates[rate]:,.2f}")
                 
             elif choice == "5":
                 print("Quitting...")
