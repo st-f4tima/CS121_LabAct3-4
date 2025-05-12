@@ -16,5 +16,5 @@ This project consists of an abstract base class `Currency` that defines a standa
 
 And also the method:
 
-- `convert_to(amount, target_currency)`: this converts the current amount into a specified target currency using USDollar as a base.
-- `compare_with()`
+- `convert_to(amount, target_currency)`: converts the current amount into a specified target currency using USDollar as a base.
+- `compare_with(amount, other_currency)`: compares which in two different currencies is stronger using USDollar as basis currency.
