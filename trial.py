@@ -145,9 +145,44 @@ def main():
                         print(f"{amount:,.2f} {base_currency_code} = {result:,.2f} {code}")
                 print()
 
-            #choice 3
-            #choice 4
-            #choice 5
+            elif choice == "3":
+                amount = float(input('\nEnter amount to compare: '))
+                try:
+                    currency1, currency2 = input("Enter two currencies (PHP, JPY, USD, INR): ").upper().split()
+                except ValueError:
+                    print("Please enter exactly two currencies separated by a space.")
+                    continue
+
+                if currency1 not in exchange_rates or currency2 not in exchange_rates:
+                    print("Unsupported currency code entered.")
+                    continue
+
+                currency1_obj = get_currency_instance(currency1)
+                currency2_obj = get_currency_instance(currency2)
+
+                usd_value1 = currency1_obj.convert_to(amount, "USD")
+                usd_value2 = currency2_obj.convert_to(amount, "USD")
+
+                print(f"\nComparing {currency1} and {currency2} (converted to USD):")
+                print(f"{amount:,.2f} {currency1} = {usd_value1:,.2f} USD")
+                print(f"{amount:,.2f} {currency2} = {usd_value2:,.2f} USD")
+
+                if usd_value1 > usd_value2:
+                    print(f"{currency1} is stronger than {currency2}.")
+                elif usd_value1 < usd_value2:
+                    print(f"{currency2} is stronger than {currency1}.")
+                else:
+                    print("Both currencies have equal strength.")
+                print()
+                continue
+
+            elif choice == 4:
+                print("─────────────🌐 Exchange Rate 🌐─────────────")
+                print(exchange_rates) 
+                
+            elif choice == 5:
+                print("Quitting...")
+                break
             
             else:
                 raise ValueError('Invalid option. Please choose a number between 1 and 5.')
