@@ -176,11 +176,11 @@ def main():
                 print()
                 continue
 
-            elif choice == 4:
+            elif choice == "4":
                 print("─────────────🌐 Exchange Rate 🌐─────────────")
                 print(exchange_rates) 
                 
-            elif choice == 5:
+            elif choice == "5":
                 print("Quitting...")
                 break
             
