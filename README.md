@@ -28,26 +28,27 @@
 - Clean command-line UI with menus
 - Currency metadata including symbols, subunits, and       central banks
 
-
-## 🏗️ How It Works
+## 📈Class Diagram
+This diagram is our basis of what object-oriented programming project we would like to create. 
+![Class Diagram](UML-diagram/currency_uml.png)
 
 This project consists of an abstract base class `Currency` that defines a standard interface for all currencies - the parent class. It is extended by four subclasses namely: `PhilippinePeso`, `JapaneseYen`, `USDollar`, and `IndianRupee`. Each currency class comes with the following properties inherited from `Currency`:
 
-- `amount`: a private property that signifies the value of each currency
 - `currency_code`: code representation (ex. "PHP", "JPY", "USD", "INR")
 - `symbol`: currency symbol (ex. "₱", "¥", "$", "₹")
 - `sub_unit`: fractional unit (ex. "centavo", "sen")
+- `amount`: a private property that signifies the value of each currency
 - `rate_to_usd`: the exchange rate relative to 1 USD
+- `central_bank`: the central bank of the country of each currency
 
-And also the method:
+And also the methods:
 
 - `convert_to(amount, target_currency)`: converts the current amount into a specified target currency using USDollar as a base.
 
 - `compare_with(amount, other_currency)`: compares which in two different currencies is stronger using USDollar as basis currency.
 Conversions work by converting first to USD, then from USD to the target currency.
 
-## 📈Class Diagram
-This diagram is our basis of what object-oriented programming project we would like to create. 
+
 
 
 ## 💻 Code Snippet
