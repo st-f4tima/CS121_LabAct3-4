@@ -108,6 +108,19 @@ This project is easy to navigate. You won't sweat any bit... Follow the instruct
 - This program only supports PHP, JPY, USD, and INR.
 - We use predefined exchange rates.
 
+## 🌸 Acknowledgement
+
+We would like to express our heartfelt gratitude to those who helped bring this project to life. 🌟
+
+First and foremost, a sincere thank you to our instructor, Ms. Fatima Marie P. Agdon, MSCS, whose thoughtful guidance and invaluable insights were essential in shaping this work. Your support has been truly appreciated.
+
+We’d also like to thank our amazing teammates for their hard work, and dedication throughout this project. It’s been a great experience working together, and we couldn’t have done it without each other.
+
+This project would not have been possible without all of you.
+
+— The Team ✨
+
+
 ## 👥 Authors
 - Fatima Pura
 - Nikki Limboc
