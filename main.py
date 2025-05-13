@@ -124,7 +124,7 @@ def get_currency_instance(currency_code):
     elif currency_code == "INR":
         return IndianRupee()
     else:
-        raise ValueError(f"Unsupported currency.")
+        raise ValueError("Unsupported currency.")
     
 
 def main():
@@ -139,11 +139,11 @@ def main():
                     
                     base_currency_code = input('Enter base currency code (PHP, JPY, USD, INR): ').strip().upper()
                     if base_currency_code not in exchange_rates:
-                        raise Exception(f"Unsupported currency.")
+                        raise Exception("Unsupported currency.")
 
                     target_currency_code = input('Enter target currency code (PHP, JPY, USD, INR): ').strip().upper()
                     if target_currency_code not in exchange_rates:
-                        raise Exception(f"Unsupported currency.")
+                        raise Exception("Unsupported currency.")
 
                     currency = get_currency_instance(base_currency_code)
                     result = currency.convert_to(amount, target_currency_code)
@@ -163,12 +163,12 @@ def main():
                     amount = float(input('\nEnter amount: '))
                     base_currency_code = input('Enter base currency code (PHP, JPY, USD, INR): ').strip().upper()
                     if base_currency_code not in exchange_rates:
-                        raise Exception(f"Unsupported currency.")
+                        raise Exception("Unsupported currency.")
                     
                     currency = get_currency_instance(base_currency_code)
                     clear_screen()
                     print(currency)
-                    print(f"\n📊 Converting to all other currencies:")
+                    print("\n📊 Converting to all other currencies:")
                     for code in exchange_rates:
                         if code != base_currency_code:
                             result = currency.convert_to(amount, code)
@@ -218,14 +218,14 @@ def main():
 
             elif choice == "4":
                 clear_screen()
-                print(f"\n────────────🌍 Current Exchange Rates 🌍────────────")
+                print("\n────────────🌍 Current Exchange Rates 🌍────────────")
                 print("\nStay informed with the latest currency exchange values:\n")
                 for rate in exchange_rates:
                     print(f"{rate}: {exchange_rates[rate]:,.2f}")
 
             elif choice == "5":
                 clear_screen()
-                print(f"\n────────────────── ℹ️  About This ℹ️  ────────────────")
+                print("\n────────────────── ℹ️  About This ℹ️  ────────────────")
                 print("\n💡 A simple tool for currency conversion and comparison.\n")
                 print("💻 Made by the following programmers:")
                 print("1. Fatima A. Pura - CS 1201")
