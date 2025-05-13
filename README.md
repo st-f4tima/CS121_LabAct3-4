@@ -110,7 +110,7 @@ This project is easy to navigate. You won't sweat any bit... Follow the instruct
      - Read about us - the developer.
   
        
-   ![The prompt.](prompt.png)
+   ![The prompt.](readme-images/prompt.png)
   
 **🗒️📌Notes** 
 - This program only supports PHP, JPY, USD, and INR.

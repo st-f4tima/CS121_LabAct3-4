@@ -1,5 +1,8 @@
 @startuml currency_uml
 
+skinparam backgroundColor #0d1117
+skinparam ArrowColor yellow
+
 abstract class Currency {
     + currency_code: str
     + symbol: str
