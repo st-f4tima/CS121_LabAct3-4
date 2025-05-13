@@ -17,12 +17,10 @@ class Currency(ABC):
         self._rate_to_usd = rate_to_usd
         self.central_bank = central_bank
     
-    @property
-    def amount(self):
+    def get_amount(self):
         return self.__amount
     
-    @amount.setter
-    def amount(self, amount):
+    def set_amount(self, amount):
         self.__amount = amount
 
     @abstractmethod

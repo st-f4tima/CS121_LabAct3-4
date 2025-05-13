@@ -1,47 +1,64 @@
 @startuml currency_uml
+
 abstract class Currency {
     + currency_code: str
     + symbol: str
     + sub_unit: str
-    
+    - amount: float = 0.0
+    # rate_to_usd: float
+    + central_bank: str
     ---
-    + __init__(amount: float, currency_name: str, exhange_rate: float)
+    + __init__(currency_code: str, symbol: str, sub_unit: str, amount: float, rate_to_usd: float, central_bank: str)
     + get_amount(): float
-    + get_currency(): str
-    # convert_to(other_currency: str, amount: float)
-    + compare_with(other_currency: str, basis_currency: str)
-    + __str__
+    + set_amount(amount: float)
+    # convert_to(amount: float, target_amount: float)
+    + compare_with(amount: float, other_currency: str): int
+    + __str__(): str
 }
 
 class PhilippinePeso {
-    - sub_unit: str
+    + currency_code: str = "PHP"
+    + symbol: str = "₱"
+    + sub_unit: str = "Centavos"
+    # rate_to_usd: float = exchange_rates["PHP"]
+    + central_bank: str = "Bangko Sentral ng Pilipinas"
     ---
-    + convert_to(other_currency: str, amount: float)
+    + convert_to(amount: float, target_amount: float): float
 }
 
 class JapaneseYen {
+    + currency_code: str = "JPY"
+    + symbol: str = "¥"
+    + sub_unit: str = "Sen"
+    # rate_to_usd: float = exchange_rates["JPY"]
+    + central_bank: str = "Bank of Japan"
     ---
-    + convert_to(other_currency: str, amount: float)
+    + convert_to(amount: float, target_amount: float): float
 }
 
 class USDollar {
-    - sub_unit: str
+    + currency_code: str = "USD"
+    + symbol: str = "$"
+    + sub_unit: str = "Cent"
+    # rate_to_usd: float = exchange_rates["USD"]
+    + central_bank: str = "Federal Reserve"
     ---
-    + convert_to(other_currency: str, amount: float)
+    + convert_to(amount: float, target_amount: float): float
 }
 
 class IndianRupee {
-    - sub_unit: str
+    + currency_code: str = "INR"
+    + symbol: str = "₹"
+    + sub_unit: str = "Paise"
+    # rate_to_usd: float = exchange_rates["JPY"]
+    + central_bank: str = "Bank of India"
     ---
-    + convert_to(other_currency: str, amount: float)
+    + convert_to(amount: float, target_amount: float): float
 }
 
 Currency <-down- PhilippinePeso 
 Currency <-up- JapaneseYen
 Currency <-left- USDollar
 Currency <-right- IndianRupee
-
-' PhilippinePeso -down-> Currency
-' JapaneseYen -up-> Currency
 
 @enduml
