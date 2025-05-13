@@ -33,7 +33,7 @@ class Currency(ABC):
         other_usd = other_currency.conver_to(amount, "USD")
 
         if self_usd > other_usd:
-            reutrn 1
+            return 1
         elif self_usd < other_usd:
             return -1
         else:
@@ -183,36 +183,38 @@ def main():
             elif choice == "3":
                 try:
                     amount = float(input('\nEnter amount to compare: '))
+                    
                     currency1 = input('Enter first currency code (PHP, JPY, USD, INR): ').strip().upper()
                     if currency1 not in exchange_rates:
-                        raise Exception(f"Unsupported currency.")
+                        raise Exception("Unsupported currency.")
 
                     currency2 = input('Enter second currency code (PHP, JPY, USD, INR): ').strip().upper()
                     if currency2 not in exchange_rates:
-                        raise Exception(f"Unsupported currency.")
+                        raise Exception("Unsupported currency.")
 
                     currency1_obj = get_currency_instance(currency1)
                     currency2_obj = get_currency_instance(currency2)
 
-                    result = currency1.compare_with(amount, currency2)
+                    result = currency1_obj.compare_with(amount, currency2_obj)
 
                     clear_screen()
                     print("\n─────────────💵 Currency Comparison 💵─────────────")
-                    print(f"\nComparing {currency1_code} and {currency2_code} (converted to USD):")
-                    print(f"{amount:,.2f} {currency1_code} = {currency1.convert_to(amount, 'USD'):,.2f} USD")
-                    print(f"{amount:,.2f} {currency2_code} = {currency2.convert_to(amount, 'USD'):,.2f} USD")
+                    print(f"\nComparing {currency1} and {currency2} (converted to USD):")
+                    print(f"{amount:,.2f} {currency1} = {currency1_obj.convert_to(amount, 'USD'):,.2f} USD")
+                    print(f"{amount:,.2f} {currency2} = {currency2_obj.convert_to(amount, 'USD'):,.2f} USD")
 
                     if result == 1:
-                        print(f"\n{currency1_code} is stronger than {currency2_code}.")
+                        print(f"\n{currency1} is stronger than {currency2}.")
                     elif result == -1:
-                        print(f"\n{currency2_code} is stronger than {currency1_code}.")
+                        print(f"\n{currency2} is stronger than {currency1}.")
                     else:
                         print("\nBoth currencies have equal strength.")
-                
+
                 except ValueError:
                     print('Error: Invalid input. Please enter a valid number.')
                 except Exception as e:
                     print(f"Error: {e}")
+
 
             elif choice == "4":
                 clear_screen()
