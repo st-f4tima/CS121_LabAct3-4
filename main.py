@@ -224,10 +224,10 @@ def main():
                 print("\n────────────────── ℹ️  About This ℹ️  ────────────────")
                 print("\n💡 A simple tool for currency conversion and comparison.\n")
                 print("💻 Made by the following programmers:")
-                print("1. Fatima A. Pura - CS 1201")
-                print("2. Nikki Limboc - CS 1201")
-                print("3. Gian Louie Baes - CS 1201")
-                print("4. Lance Kert Mendoza - CS 1201")
+                print("1. Fatima A. Pura - CS 1204")
+                print("2. Nikki Limboc - CS 1204")
+                print("3. Gian Louie Baes - CS 1204")
+                print("4. Lance Kert Mendoza - CS 1204")
 
             elif choice == "6":
                 print("\nQuitting...")
