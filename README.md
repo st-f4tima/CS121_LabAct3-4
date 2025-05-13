@@ -30,6 +30,7 @@
 
 ## 📈Class Diagram
 This diagram is our basis of what object-oriented programming project we would like to create. 
+
 ![Class Diagram](UML-diagram/currency_uml.png)
 
 This project consists of an abstract base class `Currency` that defines a standard interface for all currencies - the parent class. It is extended by four subclasses namely: `PhilippinePeso`, `JapaneseYen`, `USDollar`, and `IndianRupee`. Each currency class comes with the following properties inherited from `Currency`:
