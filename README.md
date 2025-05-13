@@ -36,19 +36,18 @@ This project consists of an abstract base class `Currency` that defines a standa
 
 ```python
 class Currency(ABC):
-    def __init__(self, currency_code, symbol, sub_unit, rate_to_usd):
+    def __init__(self, currency_code, symbol, sub_unit, rate_to_usd, central_bank):
         self.currency_code = currency_code
         self.symbol = symbol
         self.sub_unit = sub_unit
         self.__amount = 0.0
         self._rate_to_usd = rate_to_usd
+        self.central_bank = central_bank
     
-    @property
-    def amount(self):
+    def get_amount(self):
         return self.__amount
     
-    @amount.setter
-    def amount(self, amount):
+    def set_amount(self, amount):
         self.__amount = amount
 
     @abstractmethod
@@ -57,7 +56,7 @@ class Currency(ABC):
 
     def compare_with(self, amount, other_currency):
         self_usd = self.convert_to(amount, "USD")
-        other_usd = other_currency.conver_to(amount, "USD")
+        other_usd = other_currency.convert_to(amount, "USD")
 
         if self_usd > other_usd:
             return 1
@@ -71,7 +70,8 @@ class Currency(ABC):
             f'\n─────────────💵 Currency Information 💵─────────────\n\n'
             f"Currency: {self.currency_code} ({self.symbol})\n"
             f"Subunit: {self.sub_unit}\n"
-            f"Exchange Rate to USD: {self._rate_to_usd}"
+            f"Exchange Rate to USD: {self._rate_to_usd}\n"
+            f"Central Bank: {self.central_bank if self.central_bank else 'N/A'}"
         )
 ```
 It is extended by four subclasses namely: `PhilippinePeso`, `JapaneseYen`, `USDollar`, and `IndianRupee`. Each currency class comes with the following properties inherited from `Currency`:
