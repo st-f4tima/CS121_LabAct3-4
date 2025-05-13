@@ -93,13 +93,6 @@ class Currency(ABC):
 - `abc` for abstract base classes
 - `os` for cross-platform terminal clearing
 
-
-## 👥 Authors
-- Fatima Pura
-- Nikki Limboc
-- Gian Louie Baes
-- Lance Kert Mendoza
-
 ## 🚀 Usage
 This project is easy to navigate. You won't sweat any bit... Follow the instructions!!
 1. Install Python
@@ -114,3 +107,9 @@ This project is easy to navigate. You won't sweat any bit... Follow the instruct
 **🗒️📌Notes** 
 - This program only supports PHP, JPY, USD, and INR.
 - We use predefined exchange rates.
+
+## 👥 Authors
+- Fatima Pura
+- Nikki Limboc
+- Gian Louie Baes
+- Lance Kert Mendoza
