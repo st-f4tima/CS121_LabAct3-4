@@ -121,8 +121,13 @@ This project would not have been possible without all of you.
 — *The Team*✨
 
 
-## 👥 Authors
-- Fatima Pura
-- Nikki Limboc
-- Gian Louie Baes
-- Lance Kert Mendoza
+## 👥 Authors  
+### **Team 4** - *Collaborators in Innovation*
+
+| Members                         | Github Profile                                            |
+| ------------------------------- | --------------------------------------------------------- |
+| **Baes, Gian Louie D.**         | [HaiseSasaki23](https://github.com/HaiseSasaki23)         |
+| **Limboc, Nikki C.**            | [nikkibuttowsk](https://github.com/nikkibuttowsk)         |
+| **Mendoza, Lance Kert O.**      | [sleepingPotato17](https://github.com/sleepingPotato17)   |
+| **Pura, Fatima A.**             | [st-f4tima](https://github.com/st-f4tima)                 |
+
