@@ -1,7 +1,9 @@
 @startuml currency_uml
 abstract class Currency {
-    - amount: float
-    - currency_name: str
+    + currency_code: str
+    + symbol: str
+    + sub_unit: str
+    
     ---
     + __init__(amount: float, currency_name: str, exhange_rate: float)
     + get_amount(): float

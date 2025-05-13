@@ -1,5 +1,5 @@
 # CS 121 Laboratory Activity 3
-![Currency logo](currency(1).jpg)
+![Currency logo](readme-images/currency(1).jpg)
 
 <h3 align="center">
   <a href="#📦-features">Features</a> •
@@ -60,7 +60,7 @@ class Currency(ABC):
         other_usd = other_currency.conver_to(amount, "USD")
 
         if self_usd > other_usd:
-            reutrn 1
+            return 1
         elif self_usd < other_usd:
             return -1
         else:

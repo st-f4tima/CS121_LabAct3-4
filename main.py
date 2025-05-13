@@ -9,12 +9,13 @@ exchange_rates = {
 }
 
 class Currency(ABC):
-    def __init__(self, currency_code, symbol, sub_unit, rate_to_usd):
+    def __init__(self, currency_code, symbol, sub_unit, rate_to_usd, central_bank):
         self.currency_code = currency_code
         self.symbol = symbol
         self.sub_unit = sub_unit
         self.__amount = 0.0
         self._rate_to_usd = rate_to_usd
+        self.central_bank = central_bank
     
     @property
     def amount(self):
@@ -44,63 +45,60 @@ class Currency(ABC):
             f'\n─────────────💵 Currency Information 💵─────────────\n\n'
             f"Currency: {self.currency_code} ({self.symbol})\n"
             f"Subunit: {self.sub_unit}\n"
-            f"Exchange Rate to USD: {self._rate_to_usd}"
+            f"Exchange Rate to USD: {self._rate_to_usd}\n"
+            f"Central Bank: {self.central_bank if self.central_bank else 'N/A'}"
         )
 
 class PhilippinePeso(Currency):
     def __init__(self):
-        super().__init__("PHP", "₱", "Centavos", exchange_rates['PHP'])
+        self.currency_code = "PHP"
+        self.symbol = "₱"
+        self.sub_unit = "Centavos"
+        self._rate_to_usd = exchange_rates['PHP']
         self.central_bank = "Bangko Sentral ng Pilipinas"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
 
-    def __str__(self):
-        base_info = super().__str__()
-        return f"{base_info}\nCentral Bank: {self.central_bank}"
-
 class JapaneseYen(Currency):
     def __init__(self):
-        super().__init__("JPY", "¥", "Sen", exchange_rates['JPY'])
+        self.currency_code = "JPY"
+        self.symbol = "¥"
+        self.sub_unit = "Sen"
+        self._rate_to_usd = exchange_rates['JPY']
         self.central_bank = "Bank of Japan"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
 
-    def __str__(self):
-        base_info = super().__str__()
-        return f"{base_info}\nCentral Bank: {self.central_bank}"
-
 class USDollar(Currency):
     def __init__(self):
-        super().__init__("USD", "$", "Cent", exchange_rates['USD'])
+        self.currency_code = "USD"
+        self.symbol = "$"
+        self.sub_unit = "Cent"
+        self._rate_to_usd = exchange_rates['USD']
         self.central_bank = "Federal Reserve"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
 
-    def __str__(self):
-        base_info = super().__str__()
-        return f"{base_info}\nCentral Bank: {self.central_bank}"
-
 class IndianRupee(Currency):
     def __init__(self):
-        super().__init__("INR", "₹", "Paise", exchange_rates['INR'])
+        self.currency_code = "INR"
+        self.symbol = "₹"
+        self.sub_unit = "Paise"
+        self._rate_to_usd = exchange_rates['INR']
         self.central_bank = "Bank of India"
 
     def convert_to(self, amount, target_currency_code):
         usd = amount * self._rate_to_usd
         return usd / exchange_rates[target_currency_code]
 
-    def __str__(self):
-        base_info = super().__str__()
-        return f"{base_info}\nCentral Bank: {self.central_bank}"
 
 # Functions
-
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
