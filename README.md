@@ -1,5 +1,5 @@
 # CS 121 Laboratory Activity 3 & 4
-![Currency logo](readme-images/currency(1).jpg)
+![Currency logo](readme-images/currency.jpg)
 
 <h3 align="center">
   <a href="#📦-features">Features</a> •
