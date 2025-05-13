@@ -122,7 +122,7 @@ This project would not have been possible without all of you.
 
 
 ## 👥 Authors  
-### **Team 4** - *Collaborators*
+### **Team 4** - *The Collaborators*
 
 | Members                         | Github Profile                                            |
 | ------------------------------- | --------------------------------------------------------- |
