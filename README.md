@@ -14,7 +14,7 @@
 
 ### An Object-Oriented Programming Project: Class 💸Currency💸
 
-> *Because not all heroes has every cash. We don't know how to make cents of it all but we'll try...* Your reliable, no-nonsense **currency converter** will save you from bad math exchange rate and worse😩. We're making international transactions a little less tragic - one line of code at a time. 
+> *Because not all heroes has every cash. We don't know how to make cents of it all but we'll try...* Your reliable, no-nonsense **currency converter** will save you from bad math exchange rates. We're making international transactions a little less tragic - one line of code at a time. 
 
 **Project 1204: A Conversion Story** runs in the world of Python OOP, where clean structure, solid principle, and reusable logic rule the economy. Whether you're dealing in Dollars, Peso, Rupee, or Yen, this converter has your back. 
 
@@ -29,11 +29,24 @@
 - Currency metadata including symbols, subunits, and       central banks
 
 
-
 ## 🏗️ How It Works
 
-This project consists of an abstract base class `Currency` that defines a standard interface for all currencies - the parent class.
+This project consists of an abstract base class `Currency` that defines a standard interface for all currencies - the parent class. It is extended by four subclasses namely: `PhilippinePeso`, `JapaneseYen`, `USDollar`, and `IndianRupee`. Each currency class comes with the following properties inherited from `Currency`:
 
+- `amount`: a private property that signifies the value of each currency
+- `currency_code`: code representation (ex. "PHP", "JPY", "USD", "INR")
+- `symbol`: currency symbol (ex. "₱", "¥", "$", "₹")
+- `sub_unit`: fractional unit (ex. "centavo", "sen")
+- `rate_to_usd`: the exchange rate relative to 1 USD
+
+And also the method:
+
+- `convert_to(amount, target_currency)`: converts the current amount into a specified target currency using USDollar as a base.
+
+- `compare_with(amount, other_currency)`: compares which in two different currencies is stronger using USDollar as basis currency.
+Conversions work by converting first to USD, then from USD to the target currency.
+
+## 💻 Code Snippet
 ```python
 class Currency(ABC):
     def __init__(self, currency_code, symbol, sub_unit, rate_to_usd, central_bank):
@@ -74,22 +87,6 @@ class Currency(ABC):
             f"Central Bank: {self.central_bank if self.central_bank else 'N/A'}"
         )
 ```
-It is extended by four subclasses namely: `PhilippinePeso`, `JapaneseYen`, `USDollar`, and `IndianRupee`. Each currency class comes with the following properties inherited from `Currency`:
-
-- `amount`: a private property that signifies the value of each currency
-- `currency_code`: code representation (ex. "PHP", "JPY", "USD", "INR")
-- `symbol`: currency symbol (ex. "₱", "¥", "$", "₹")
-- `sub_unit`: fractional unit (ex. "centavo", "sen")
-- `rate_to_usd`: the exchange rate relative to 1 USD
-
-And also the method:
-
-- `convert_to(amount, target_currency)`: converts the current amount into a specified target currency using USDollar as a base.
-
-- `compare_with(amount, other_currency)`: compares which in two different currencies is stronger using USDollar as basis currency.
-Conversions work by converting first to USD, then from USD to the target currency.
-
-
 ## 🧠 Tech Stack
 
 - `Python` for programming language
@@ -104,5 +101,16 @@ Conversions work by converting first to USD, then from USD to the target currenc
 - Lance Kert Mendoza
 
 ## 🚀 Usage
-
-
+This project is easy to navigate. You won't sweat any bit... Follow the instructions!!
+1. Install Python
+2. Run the program in your terminal or command prompt.
+3. Follow the prompts in the terminal. There, you'll be able to:
+     - Convert an amount from one currency to another.
+     - Convert an amount to multiple currencies at once.
+     - Compare which currency is stronger
+     - View exchange rates.
+     - Read about us - the developer.
+  
+**🗒️📌Notes** 
+- This program only supports PHP, JPY, USD, and INR.
+- We use predefined exchange rates.
