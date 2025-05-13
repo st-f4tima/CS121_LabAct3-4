@@ -30,7 +30,7 @@ class Currency(ABC):
 
     def compare_with(self, amount, other_currency):
         self_usd = self.convert_to(amount, "USD")
-        other_usd = other_currency.conver_to(amount, "USD")
+        other_usd = other_currency.convert_to(amount, "USD")
 
         if self_usd > other_usd:
             return 1
