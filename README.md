@@ -118,11 +118,11 @@ We’d also like to thank our amazing teammates for their hard work, and dedicat
 
 This project would not have been possible without all of you.
 
-— *The Team*✨
+— *The Team* ✨
 
 
 ## 👥 Authors  
-### **Team 4** - *Collaborators in Innovation*
+### **Team 4** - *Collaborators*
 
 | Members                         | Github Profile                                            |
 | ------------------------------- | --------------------------------------------------------- |
