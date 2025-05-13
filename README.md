@@ -110,7 +110,7 @@ This project is easy to navigate. You won't sweat any bit... Follow the instruct
 
 ## 🌸 Acknowledgement
 
-We would like to express our heartfelt gratitude to those who helped bring this project to life. 🌟
+We would like to express our heartfelt gratitude to those who helped bring this project to life. 
 
 First and foremost, a sincere thank you to our instructor, Ms. Fatima Marie P. Agdon, MSCS, whose thoughtful guidance and invaluable insights were essential in shaping this work. Your support has been truly appreciated.
 
@@ -126,8 +126,8 @@ This project would not have been possible without all of you.
 
 | Members                         | Github Profile                                            |
 | ------------------------------- | --------------------------------------------------------- |
-| **Baes, Gian Louie D.**         | [HaiseSasaki23](https://github.com/HaiseSasaki23)         |
-| **Limboc, Nikki C.**            | [nikkibuttowsk](https://github.com/nikkibuttowsk)         |
-| **Mendoza, Lance Kert O.**      | [sleepingPotato17](https://github.com/sleepingPotato17)   |
-| **Pura, Fatima A.**             | [st-f4tima](https://github.com/st-f4tima)                 |
+| **Baes, Gian Louie D.**         | [@HaiseSasaki23](https://github.com/HaiseSasaki23)         |
+| **Limboc, Nikki C.**            | [@nikkibuttowsk](https://github.com/nikkibuttowsk)         |
+| **Mendoza, Lance Kert O.**      | [@sleepingPotato17](https://github.com/sleepingPotato17)   |
+| **Pura, Fatima A.**             | [@st-f4tima](https://github.com/st-f4tima)                 |
 
