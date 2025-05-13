@@ -46,6 +46,10 @@ And also the method:
 - `compare_with(amount, other_currency)`: compares which in two different currencies is stronger using USDollar as basis currency.
 Conversions work by converting first to USD, then from USD to the target currency.
 
+## 📈Class Diagram
+This diagram is our basis of what object-oriented programming project we would like to create. 
+
+
 ## 💻 Code Snippet
 ```python
 class Currency(ABC):
@@ -103,6 +107,9 @@ This project is easy to navigate. You won't sweat any bit... Follow the instruct
      - Compare which currency is stronger
      - View exchange rates.
      - Read about us - the developer.
+  
+       
+   ![The prompt.](prompt.png)
   
 **🗒️📌Notes** 
 - This program only supports PHP, JPY, USD, and INR.
