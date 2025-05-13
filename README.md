@@ -1,4 +1,4 @@
-# CS 121 Laboratory Activity 3
+# CS 121 Laboratory Activity 3 & 4
 ![Currency logo](readme-images/currency(1).jpg)
 
 <h3 align="center">
