@@ -223,7 +223,7 @@ def main():
                 print("\n────────────🌍 Current Exchange Rates 🌍────────────")
                 print("\nStay informed with the latest currency exchange values:\n")
                 for rate in exchange_rates:
-                    print(f"{rate}: {exchange_rates[rate]:,.2f}")
+                    print(f"{rate}: {exchange_rates[rate]}")
 
             elif choice == "5":
                 clear_screen()
