@@ -3,7 +3,8 @@
 
 <h3 align="center">
   <a href="#📦-features">Features</a> •
-  <a href="#🏗️-how-it-works">How It Works</a> •
+  <a href="#📈-class-diagram">Class Diagram</a> •
+  <a href="#💻-code-snippet">Code Snippet</a> •
   <a href="#🧠-tech-stack">Tech Stack</a> •
   <a href="#👥-authors">Authors</a> •
 </h3>
@@ -54,6 +55,7 @@ Conversions work by converting first to USD, then from USD to the target currenc
 
 ## 💻 Code Snippet
 ```python
+#Parent Class
 class Currency(ABC):
     def __init__(self, currency_code, symbol, sub_unit, rate_to_usd, central_bank):
         self.currency_code = currency_code
@@ -62,36 +64,39 @@ class Currency(ABC):
         self.__amount = 0.0
         self._rate_to_usd = rate_to_usd
         self.central_bank = central_bank
-    
-    def get_amount(self):
-        return self.__amount
-    
-    def set_amount(self, amount):
-        self.__amount = amount
 
-    @abstractmethod
-    def convert_to(self, amount, target_currency_code):
-        pass
+#Sub Classes
+class PhilippinePeso(Currency):
+    def __init__(self):
+        self.currency_code = "PHP"
+        self.symbol = "₱"
+        self.sub_unit = "Centavos"
+        self._rate_to_usd = exchange_rates['PHP']
+        self.central_bank = "Bangko Sentral ng Pilipinas"
 
-    def compare_with(self, amount, other_currency):
-        self_usd = self.convert_to(amount, "USD")
-        other_usd = other_currency.convert_to(amount, "USD")
+class JapaneseYen(Currency):
+    def __init__(self):
+        self.currency_code = "JPY"
+        self.symbol = "¥"
+        self.sub_unit = "Sen"
+        self._rate_to_usd = exchange_rates['JPY']
+        self.central_bank = "Bank of Japan"
 
-        if self_usd > other_usd:
-            return 1
-        elif self_usd < other_usd:
-            return -1
-        else:
-            return 0
-            
-    def __str__(self):
-        return (
-            f'\n─────────────💵 Currency Information 💵─────────────\n\n'
-            f"Currency: {self.currency_code} ({self.symbol})\n"
-            f"Subunit: {self.sub_unit}\n"
-            f"Exchange Rate to USD: {self._rate_to_usd}\n"
-            f"Central Bank: {self.central_bank if self.central_bank else 'N/A'}"
-        )
+class USDollar(Currency):
+    def __init__(self):
+        self.currency_code = "USD"
+        self.symbol = "$"
+        self.sub_unit = "Cent"
+        self._rate_to_usd = exchange_rates['USD']
+        self.central_bank = "Federal Reserve"
+
+class IndianRupee(Currency):
+    def __init__(self):
+        self.currency_code = "INR"
+        self.symbol = "₹"
+        self.sub_unit = "Paise"
+        self._rate_to_usd = exchange_rates['INR']
+        self.central_bank = "Bank of India"
 ```
 ## 🧠 Tech Stack
 
