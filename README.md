@@ -68,35 +68,43 @@ class Currency(ABC):
 #Sub Classes
 class PhilippinePeso(Currency):
     def __init__(self):
-        self.currency_code = "PHP"
-        self.symbol = "₱"
-        self.sub_unit = "Centavos"
-        self._rate_to_usd = exchange_rates['PHP']
-        self.central_bank = "Bangko Sentral ng Pilipinas"
+        super().__init__(
+        currency_code = "PHP",
+        symbol = "₱",
+        sub_unit = "Centavos",
+        rate_to_usd = exchange_rates['PHP'],
+        central_bank = "Bangko Sentral ng Pilipinas"
+        )
 
 class JapaneseYen(Currency):
     def __init__(self):
-        self.currency_code = "JPY"
-        self.symbol = "¥"
-        self.sub_unit = "Sen"
-        self._rate_to_usd = exchange_rates['JPY']
-        self.central_bank = "Bank of Japan"
+         super().__init__(
+        currency_code = "JPY",
+        symbol = "¥",
+        sub_unit = "Sen",
+        rate_to_usd = exchange_rates['JPY'],
+        central_bank = "Bank of Japan"
+        )
 
 class USDollar(Currency):
     def __init__(self):
-        self.currency_code = "USD"
-        self.symbol = "$"
-        self.sub_unit = "Cent"
-        self._rate_to_usd = exchange_rates['USD']
-        self.central_bank = "Federal Reserve"
+        super().__init__(
+        currency_code = "USD",
+        symbol = "$",
+        sub_unit = "Cent",
+        rate_to_usd = exchange_rates['USD'],
+        central_bank = "Federal Reserve"
+        )
 
 class IndianRupee(Currency):
     def __init__(self):
-        self.currency_code = "INR"
-        self.symbol = "₹"
-        self.sub_unit = "Paise"
-        self._rate_to_usd = exchange_rates['INR']
-        self.central_bank = "Bank of India"
+       super().__init__(
+        currency_code = "INR",
+        symbol = "₹",
+        sub_unit = "Paise",
+        rate_to_usd = exchange_rates['INR'],
+        central_bank = "Bank of India"
+        )
 ```
 ## 🧠 Tech Stack
 
