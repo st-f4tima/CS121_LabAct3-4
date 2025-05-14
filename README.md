@@ -97,15 +97,6 @@ class IndianRupee(Currency):
         self.sub_unit = "Paise"
         self._rate_to_usd = exchange_rates['INR']
         self.central_bank = "Bank of India"
-
-#Methods
-def convert_to(self, amount, target_currency_code):
-        usd = amount * self._rate_to_usd
-        return usd / exchange_rates[target_currency_code]
-
-def compare_with(self, amount, other_currency):
-        self_usd = self.convert_to(amount, "USD")
-        other_usd = other_currency.convert_to(amount, "USD")
 ```
 ## 🧠 Tech Stack
 
