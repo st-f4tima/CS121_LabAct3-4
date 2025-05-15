@@ -202,15 +202,15 @@ def main():
                     clear_screen()
                     print("\n─────────────💵 Currency Comparison 💵─────────────")
                     print(f"\nComparing {currency1} and {currency2} (converted to USD):")
-                    print(f"{amount:,.2f} {currency1} = {currency1_obj.convert_to(amount, 'USD'):,.2f} USD")
-                    print(f"{amount:,.2f} {currency2} = {currency2_obj.convert_to(amount, 'USD'):,.2f} USD")
-
+                    print(f"💷  {amount:,.2f} {currency1} = {currency1_obj.convert_to(amount, 'USD'):,.2f} USD")
+                    print(f"💷  {amount:,.2f} {currency2} = {currency2_obj.convert_to(amount, 'USD'):,.2f} USD")
+                    print('\n📊 Result: ', end="")
                     if result == 1:
-                        print(f"\n{currency1} is stronger than {currency2}.")
+                        print(f"{currency1} is stronger than {currency2}.")
                     elif result == -1:
-                        print(f"\n{currency2} is stronger than {currency1}.")
+                        print(f"{currency2} is stronger than {currency1}.")
                     else:
-                        print("\nBoth currencies have equal strength.")
+                        print("Both currencies have equal strength.")
 
                 except ValueError:
                     print('Error: Invalid input. Please enter a valid number.')
@@ -223,7 +223,7 @@ def main():
                 print("\n────────────🌍 Current Exchange Rates 🌍────────────")
                 print("\nStay informed with the latest currency exchange values:\n")
                 for rate in exchange_rates:
-                    print(f"{rate}: {exchange_rates[rate]}")
+                    print(f"✔️  {rate}: {exchange_rates[rate]}")
 
             elif choice == "5":
                 clear_screen()
