@@ -8,6 +8,7 @@ exchange_rates = {
     'INR': 0.012
 }
 
+
 class Currency(ABC):
     def __init__(self, currency_code, symbol, sub_unit, rate_to_usd, central_bank):
         self.currency_code = currency_code
@@ -126,125 +127,134 @@ def get_currency_instance(currency_code):
     elif currency_code == "INR":
         return IndianRupee()
     else:
-        raise ValueError("Unsupported currency.")
-    
+        print('Error: Unsupported currency. Please try again.')
 
 def main():
     while True:
         display_menu()
-        try:
+        
+        while True: 
             choice = input('Enter your choice (1-6): ').strip()
-
-            if choice == "1":
-                try: 
+            if choice.isdigit() and  1 <= int(choice) <= 6:
+                break
+            else:
+                print("Error: Invalid option. Please choose a number between 1 and 6.\n")
+        
+        if choice == "1":
+            while True:
+                try:
                     amount = float(input('\nEnter amount: '))
-                    
-                    base_currency_code = input('Enter base currency code (PHP, JPY, USD, INR): ').strip().upper()
-                    if base_currency_code not in exchange_rates:
-                        raise Exception("Unsupported currency.")
-
-                    target_currency_code = input('Enter target currency code (PHP, JPY, USD, INR): ').strip().upper()
-                    if target_currency_code not in exchange_rates:
-                        raise Exception("Unsupported currency.")
-
-                    currency = get_currency_instance(base_currency_code)
-                    result = currency.convert_to(amount, target_currency_code)
-
-                    clear_screen()
-                    print(currency)
-                    print("\n💱 Conversion Results:")
-                    print(f"{amount:,.2f} {base_currency_code} = {result:,.2f} {target_currency_code}")
-                
+                    break
                 except ValueError:
                     print('Error: Invalid input. Please enter a valid number for the amount.')
-                except Exception as e:
-                    print(f"Error: {e}")
 
-            elif choice == "2":
-                try: 
-                    amount = float(input('\nEnter amount: '))
-                    base_currency_code = input('Enter base currency code (PHP, JPY, USD, INR): ').strip().upper()
-                    if base_currency_code not in exchange_rates:
-                        raise Exception("Unsupported currency.")
-                    
-                    currency = get_currency_instance(base_currency_code)
-                    clear_screen()
-                    print(currency)
-                    print("\n📊 Converting to all other currencies:")
-                    for code in exchange_rates:
-                        if code != base_currency_code:
-                            result = currency.convert_to(amount, code)
-                            print(f"{amount:,.2f} {base_currency_code} = {result:,.2f} {code}")
-                
-                except ValueError:
-                    print('Error: Invalid input. Please enter a valid number.')
-                except Exception as e:
-                    print(f"Error: {e}")
+            while True:
+                current_currency_code = input('\nEnter current currency code (PHP, JPY, USD, INR): ').strip().upper()
+                if current_currency_code in exchange_rates:
+                    break
+                else:
+                    print('Error: Unsupported currency. Please try again.')
 
+            while True:
+                target_currency_code = input('\nEnter target currency code (PHP, JPY, USD, INR): ').strip().upper()
+                if target_currency_code in exchange_rates:
+                    break
+                else:
+                    print('Error: Unsupported currency. Please try again.')
 
-            elif choice == "3":
+            currency = get_currency_instance(current_currency_code)
+            result = currency.convert_to(amount, target_currency_code)
+
+            clear_screen()
+            print(currency)
+            print("\n💱 Conversion Results:")
+            print(f"{amount:,.2f} {current_currency_code} = {result:,.2f} {target_currency_code}")
+
+        elif choice == "2":
+            while True:
                 try:
-                    amount = float(input('\nEnter amount to compare: '))
-                    
-                    currency1 = input('Enter first currency code (PHP, JPY, USD, INR): ').strip().upper()
-                    if currency1 not in exchange_rates:
-                        raise Exception("Unsupported currency.")
-
-                    currency2 = input('Enter second currency code (PHP, JPY, USD, INR): ').strip().upper()
-                    if currency2 not in exchange_rates:
-                        raise Exception("Unsupported currency.")
-
-                    currency1_obj = get_currency_instance(currency1)
-                    currency2_obj = get_currency_instance(currency2)
-
-                    result = currency1_obj.compare_with(amount, currency2_obj)
-
-                    clear_screen()
-                    print("\n─────────────💵 Currency Comparison 💵─────────────")
-                    print(f"\nComparing {currency1} and {currency2} (converted to USD):")
-                    print(f"💷  {amount:,.2f} {currency1} = {currency1_obj.convert_to(amount, 'USD'):,.2f} USD")
-                    print(f"💷  {amount:,.2f} {currency2} = {currency2_obj.convert_to(amount, 'USD'):,.2f} USD")
-                    print('\n📊 Result: ', end="")
-                    if result == 1:
-                        print(f"{currency1} is stronger than {currency2}.")
-                    elif result == -1:
-                        print(f"{currency2} is stronger than {currency1}.")
-                    else:
-                        print("Both currencies have equal strength.")
-
+                    amount = float(input('\nEnter amount: '))
+                    break
                 except ValueError:
-                    print('Error: Invalid input. Please enter a valid number.')
-                except Exception as e:
-                    print(f"Error: {e}")
+                    print('Error: Invalid input. Please enter a valid number for the amount.')
 
+            while True:
+                current_currency_code = input('\nEnter current currency code (PHP, JPY, USD, INR): ').strip().upper()
+                if current_currency_code in exchange_rates:
+                    break
+                else:
+                    print('Error: Unsupported currency. Please try again.')
 
-            elif choice == "4":
-                clear_screen()
-                print("\n────────────🌍 Current Exchange Rates 🌍────────────")
-                print("\nStay informed with the latest currency exchange values:\n")
-                for code in exchange_rates:
-                    print(f"✔️  {code}: {exchange_rates[code]}")
+            currency = get_currency_instance(current_currency_code)
+            clear_screen()
+            print(currency)
+            print("\n📊 Converting to all other currencies:")
+            for code in exchange_rates:
+                if code != current_currency_code:
+                    result = currency.convert_to(amount, code)
+                    print(f"{amount:,.2f} {current_currency_code} = {result:,.2f} {code}")
 
-            elif choice == "5":
-                clear_screen()
-                print("\n────────────────── ℹ️  About This ℹ️  ────────────────")
-                print("\n💡 A simple tool for currency conversion and comparison.\n")
-                print("💻 Made by the following programmers:")
-                print("1. Fatima A. Pura - CS 1204")
-                print("2. Nikki Limboc - CS 1204")
-                print("3. Gian Louie Baes - CS 1204")
-                print("4. Lance Kert Mendoza - CS 1204")
+        elif choice == "3":
+            while True:
+                try:
+                    amount = float(input('\nEnter amount: '))
+                    break
+                except ValueError:
+                    print('Error: Invalid input. Please enter a valid number for the amount.')
 
-            elif choice == "6":
-                print("\nQuitting...")
-                break
-            
+            while True:
+                currency1 = input('\nEnter first currency code (PHP, JPY, USD, INR): ').strip().upper()
+                if currency1 in exchange_rates:
+                    break
+                else:
+                    print('Error: Unsupported currency. Please try again.')
+
+            while True:
+                currency2 = input('\nEnter second currency code (PHP, JPY, USD, INR): ').strip().upper()
+                if currency2 in exchange_rates:
+                    break
+                else:
+                    print('Error: Unsupported currency. Please try again.')
+
+            currency1_obj = get_currency_instance(currency1)
+            currency2_obj = get_currency_instance(currency2)
+            result = currency1_obj.compare_with(amount, currency2_obj)
+
+            clear_screen()
+            print("\n─────────────💵 Currency Comparison 💵─────────────")
+            print(f"\nComparing {currency1} and {currency2} (converted to USD):")
+            print(f"💷  {amount:,.2f} {currency1} = {currency1_obj.convert_to(amount, 'USD'):,.2f} USD")
+            print(f"💷  {amount:,.2f} {currency2} = {currency2_obj.convert_to(amount, 'USD'):,.2f} USD")
+            print('\n📊 Result: ', end="")
+
+            if result == 1:
+                print(f"{currency1} is stronger than {currency2}.")
+            elif result == -1:
+                print(f"{currency2} is stronger than {currency1}.")
             else:
-                raise ValueError('Invalid option. Please choose a number between 1 and 6.')
-            
-        except ValueError as e:
-            print(f'\nError: {e}')
-        
+                print("Both currencies have equal strength.")
+
+        elif choice == "4":
+            clear_screen()
+            print("\n────────────🌍 Current Exchange Rates 🌍────────────")
+            print("\nStay informed with the latest currency exchange values:\n")
+            for code in exchange_rates:
+                print(f"✔️  {code}: {exchange_rates[code]}")
+
+        elif choice == "5":
+            clear_screen()
+            print("\n────────────────── ℹ️  About This ℹ️  ────────────────")
+            print("\n💡 A simple tool for currency conversion and comparison.\n")
+            print("💻 Made by the following programmers:")
+            print("1. Fatima A. Pura - CS 1204")
+            print("2. Nikki Limboc - CS 1204")
+            print("3. Gian Louie Baes - CS 1204")
+            print("4. Lance Kert Mendoza - CS 1204")
+
+        elif choice == "6":
+            print("\nQuitting...")
+            break
+
         print('\n───────────────────────────────────────────────────')
         response = input('Back to menu (m) or quit (q)? ').strip().lower()
         if response != 'm':
@@ -255,3 +265,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+    
