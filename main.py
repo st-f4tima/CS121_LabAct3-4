@@ -21,7 +21,7 @@ class Currency(ABC):
     def get_amount(self):
         return self.__amount
     
-    def set_amount(self, amount):
+    def set_amount(self, amount): 
         self.__amount = amount
 
     @abstractmethod
@@ -135,7 +135,7 @@ def main():
         
         while True: 
             choice = input('Enter your choice (1-6): ').strip()
-            if choice.isdigit() and  1 <= int(choice) <= 6:
+            if choice.isdigit() and 1 <= int(choice) <= 6:
                 break
             else:
                 print("Error: Invalid option. Please choose a number between 1 and 6.\n")
@@ -186,6 +186,7 @@ def main():
                     print('Error: Unsupported currency. Please try again.')
 
             currency = get_currency_instance(current_currency_code)
+
             clear_screen()
             print(currency)
             print("\n📊 Converting to all other currencies:")
@@ -256,12 +257,17 @@ def main():
             break
 
         print('\n───────────────────────────────────────────────────')
-        response = input('Back to menu (m) or quit (q)? ').strip().lower()
-        if response != 'm':
-            print('\nQuitting...')
-            break
-        else:
-            clear_screen()
+        while True:
+            response = input('Back to menu (m) or quit (q)? ').strip().lower()
+            if response == 'm':
+                clear_screen()
+                break  
+            elif response == 'q':
+                print('\nQuitting...')
+                break
+            else:
+                print('Error: Please enter "m" to go back to menu or "q" to quit.\n')
+
 
 if __name__ == "__main__":
     main()
